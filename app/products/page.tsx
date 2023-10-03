@@ -2,10 +2,10 @@
 
 import Product, { ProductProps } from "./components/product";
 import FilterItem from "./components/filter";
+import { useEffect, useState } from "react";
 import Input from "./components/input";
 import Line from "./components/line";
 import Box from "./components/box";
-import { useEffect, useState } from "react";
 
 interface CategoryProps {
     name: string
@@ -101,17 +101,11 @@ export default function Products() {
         setInitialProducts(tmp_products)
     }
 
-    useEffect(() => {
+    useEffect(() => {     
+
         async function getProducts() {
-            setProductsLoading(true) 
-            const response = await fetch(`${process.env.SERVER}/products`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Credentials": "true",
-                    "Access-Control-Allow-Methods": "GET,DELETE,PATCH,POST,PUT"
-                },
-            })
+            setProductsLoading(true)
+            const response = await fetch("/api/products")
             const data = await response.json()
             setInitialProducts(data)
             setProducts(data)
@@ -120,20 +114,8 @@ export default function Products() {
 
         async function getFilter() {
             setFiltersLoading(true) 
-            const response = await fetch(`${process.env.SERVER}/families`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Credentials": "true",
-                    "Access-Control-Allow-Methods": "GET,DELETE,PATCH,POST,PUT"
-                },
-            })
-            const data: FilterProps[] = await response.json()
-
-            data.map((val) => {
-                val.categories = JSON.parse((val.categories as any))
-            })
-
+            const response = await fetch("/api/families")
+            const data = await response.json()
             setFilters(data)
             setFiltersLoading(false)
         }
