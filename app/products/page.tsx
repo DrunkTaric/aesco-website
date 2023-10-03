@@ -104,7 +104,7 @@ export default function Products() {
     useEffect(() => {
         async function getProducts() {
             setProductsLoading(true) 
-            const response = await fetch("http://127.0.0.1:8000/products", {
+            const response = await fetch(`${process.env.SERVER}/products`, {
                 headers: {
                     'Content-Type': 'application/json',
                     "Access-Control-Allow-Origin": "*",
@@ -120,7 +120,7 @@ export default function Products() {
 
         async function getFilter() {
             setFiltersLoading(true) 
-            const response = await fetch("http://127.0.0.1:8000/families", {
+            const response = await fetch(`${process.env.SERVER}/families`, {
                 headers: {
                     'Content-Type': 'application/json',
                     "Access-Control-Allow-Origin": "*",
