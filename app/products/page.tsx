@@ -20,6 +20,7 @@ interface FilterProps {
 export default function Products() {
 
     const array = [1, 2, 3, 4, 5, 6, 7, 8]
+    const words = "1234567890abcdefghijklmnopqrstuvwxyz"
 
     const [InitialProducts, setInitialProducts] = useState<ProductProps[]>([])
     
@@ -88,13 +89,17 @@ export default function Products() {
         AppyFilters()
     }
 
+    function isEmpty(str: string) {
+        return !str || str.length == 0
+    }
+
     function handleSearch(input: string) {
-        if (input == "") {
+        if (isEmpty(input)) {
             return AppyFilters()
         }
         let tmp_products: ProductProps[] = []
         for (let product of InitialProducts) {
-            if (product.name.includes(input)) {
+            if (product.name.includes(input.toUpperCase())) {
                 tmp_products.push(product)
             }
         }
