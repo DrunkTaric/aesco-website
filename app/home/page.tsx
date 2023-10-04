@@ -5,13 +5,11 @@ import ContactUs from "./components/contact";
 
 export default function Home() {
     return(
-        <>
-            <main>
-                <Header></Header>
-                <ShowCase></ShowCase>
-                <Target></Target>
-                <ContactUs></ContactUs>
-            </main>
-        </>
+        <main className="overflow-hidden">
+            <Header></Header>
+            <ShowCase></ShowCase>
+            <Target></Target>
+            <ContactUs></ContactUs>
+        </main>
     )
 }

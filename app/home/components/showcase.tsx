@@ -58,10 +58,10 @@ export default function ShowCase() {
 
     return(
         <animated.div style={props}>
-            <div className="flex pt-11">
+            <div className="flex pt-11 h-[700px]">
                 <div className="fadeOut" style={{display: "flex", padding: `1.25rem`}}>
-                    <img className="bg-cover bg-center w-[50rem] h-[500px]" alt={"Image"} src={CurrentData.image}/>
-                    <div className="pl-5 w-[55rem]">
+                    <img className="bg-cover bg-center w-[50%] min-h-[500px]" alt={"Image"} src={CurrentData.image}/>
+                    <div className="pl-5 w-[50%]">
                         <h1 className="pb-11 font-serif text-8xl">{CurrentData.iabel}</h1> 
                         <p className="text-gray-400 break-keep space-x-3">{CurrentData.disription}</p>
                     </div> 

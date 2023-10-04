@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image";
 import { useEffect, useState } from "react"
 
 const images = [
@@ -11,32 +10,27 @@ const images = [
 
 export default function Main() {
 
-    const [CurrentImage, SetCurrentImage] = useState(images[0]) 
+    const [CurrentImage, SetCurrentImage] = useState(images[0])
 
     useEffect(() => {
         setTimeout(() => {
-            SetCurrentImage(images[(images.indexOf(CurrentImage) == images.length - 1)? 0: images.indexOf(CurrentImage) + 1])
+            SetCurrentImage(images[(images.indexOf(CurrentImage) == images.length - 1) ? 0 : images.indexOf(CurrentImage) + 1])
         }, 7000)
     })
 
-    return(
-        <div className="bg-cover bg-center h-[850px]" style={{backgroundImage: CurrentImage}}>
-            <div id="header-menu">
-                <div id="header-menu-padding" className="flex p-14">
-                    <div id="header-menu-icon" className="flex h-36 w-fit">
-                        <img src="https://aesco.sa.com/storage/Logo.png" alt="logo"></img>
-                    </div>
-                    <div className="w-2/3">
-                        <div className="flex space-x-10 font-sans font-bold text-2xl text-gray-300 text-opacity-60">
-                            <a href="/" className="h-3 hover:text-white">Home</a>
-                            <a href="/products" className="h-3 hover:text-white">Products</a>
-                            <a href="/" className="h-3 hover:text-white">Solutions</a>
-                            <a href="/" className="h-3 hover:text-white">Contact</a>
-                            <a href="/" className="h-3 hover:text-white">About</a>
-                        </div>
-                    </div>
+    return (
+        <header>
+            <div id="header-menu-padding" className="absolute flex p-14 h-48">
+                <div id="header-menu-icon" className="flex h-[100%]  w-fit pr-10">
+                    <img src="https://aesco.sa.com/storage/Logo.png" alt="logo"></img>
+                </div>
+                <div className="flex space-x-10 font-sans font-bold text-2xl text-gray-300 text-opacity-60 mt-auto mb-auto">
+                    <a href="/" className="hover:text-white">Home</a>
+                    <a href="/products" className="hover:text-white">Products</a>
+                    <a href="/" className="hover:text-white">About</a>
                 </div>
             </div>
-        </div>
+            <div className="h-[850px] w-full bg-center bg-cover z-[-1]" id="header-image" style={{backgroundImage: CurrentImage}}/>
+        </header>
     )
 }
